@@ -1,0 +1,50 @@
+@page "/calculator"
+@rendermode InteractiveServer
+@using System.ComponentModel.DataAnnotations
+@using frontend.Components
+
+<PageTitle>Calculator</PageTitle>
+
+<EditForm Model="@calcModel" OnValidSubmit="Calculate" Enhance>
+    <DataAnnotationsValidator />
+    <div>
+        <label>First Number or Roman Numeral:</label>
+        <InputText @bind-Value="calcModel.FirstNumber" class="form-control" />
+        <ValidationMessage For="@(() => calcModel.FirstNumber)" class="text-danger" />
+    </div>
+    <div>
+        <label>Operation:</label>
+        <InputSelect @bind-Value="calcModel.Operation" class="form-control">
+            <option value="+">+</option>
+            <option value="-">-</option>
+        </InputSelect> 
+    </div>
+    <div>
+        <label>Second Number or Roman Numeral:</label>
+        <InputText @bind-Value="calcModel.SecondNumber" class="form-control" />
+        <ValidationMessage For="@(() => calcModel.SecondNumber)" class="text-danger" />
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Calculate</button>
+</EditForm>
+
+@if (result.HasValue)
+{
+    <div class="mt-3">
+        <strong>Result:</strong> @result
+    </div>
+}
+
+@code {
+    private CalculationModel calcModel = new();
+    private double? result;
+
+    private async Task Calculate()
+    {
+        // TODO call backend to calculate
+        if (result == null){
+            result = 1;
+        } else {
+            result+=1;
+        }
+    }
+}
