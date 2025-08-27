@@ -94,7 +94,7 @@ public class RomanNumeralParserUnitTest
         Assert.Throws<ArgumentException>(() => RomanNumeralParser.RomanToInt(""));
     }
 
-    [Theory(Skip = "Not implemented")]
+    [Theory]
     [InlineData(1, "I")]
     [InlineData(5, "V")]
     [InlineData(10, "X")]
@@ -109,8 +109,7 @@ public class RomanNumeralParserUnitTest
         Assert.Equal(expectedResult, actualResult);
     }
 
-
-    [Theory(Skip = "Not implemented")]
+    [Theory]
     [InlineData(4, "IV")]
     [InlineData(9, "IX")]
     [InlineData(40, "XL")]
@@ -124,4 +123,23 @@ public class RomanNumeralParserUnitTest
         Assert.Equal(expectedResult, actualResult);
     }
 
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-1)]
+    [InlineData(-100)]
+    public void testIntToRomanInvalidNegativeOrZeroNumbers(int number)
+    {
+        Assert.Throws<ArgumentException>(() => RomanNumeralParser.IntToRoman(number));
+    }
+
+    [Theory]
+    [InlineData(89, "LXXXIX")]
+    [InlineData(1990, "MCMXC")]
+    [InlineData(2024, "MMXXIV")]
+    public void testValidComplexInts(int number, string expectedResult)
+    {
+        string actualResult = RomanNumeralParser.IntToRoman(number);
+
+        Assert.Equal(expectedResult, actualResult);
+    }
 }

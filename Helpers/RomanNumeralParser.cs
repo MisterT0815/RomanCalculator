@@ -12,21 +12,21 @@ public static class RomanNumeralParser
         {'M', 1000}
     };
 
-    private static readonly Dictionary<int, string> IntToRomanMap = new Dictionary<int, string>
+    private static readonly List<KeyValuePair<int, string>> IntToRomanMap = new List<KeyValuePair<int, string>>
     {
-        {1000, "M"},
-        { 900, "CM"},
-        { 500, "D"},
-        { 400, "CD"},
-        { 100, "C"},
-        { 90, "XC"},
-        { 50, "L"},
-        { 40, "XL"},
-        { 10, "X"},
-        { 9, "IX"},
-        { 5, "V"},
-        { 4, "IV"},
-        { 1, "I"}
+        new KeyValuePair<int, string>(1000, "M"),
+        new KeyValuePair<int, string>(900, "CM"),
+        new KeyValuePair<int, string>(500, "D"),
+        new KeyValuePair<int, string>(400, "CD"),
+        new KeyValuePair<int, string>(100, "C"),
+        new KeyValuePair<int, string>(90, "XC"),
+        new KeyValuePair<int, string>(50, "L"),
+        new KeyValuePair<int, string>(40, "XL"),
+        new KeyValuePair<int, string>(10, "X"),
+        new KeyValuePair<int, string>(9, "IX"),
+        new KeyValuePair<int, string>(5, "V"),
+        new KeyValuePair<int, string>(4, "IV"),
+        new KeyValuePair<int, string>(1, "I")
     };
 
     public static int RomanToInt(string roman)
@@ -87,6 +87,20 @@ public static class RomanNumeralParser
 
     public static string IntToRoman(int number)
     {
-        return "TODO";
+        if (number <= 0)
+            throw new ArgumentException("Input must be a positive integer.");
+
+        var roman = new System.Text.StringBuilder();
+
+        foreach (var pair in IntToRomanMap)
+        {
+            while (number >= pair.Key)
+            {
+                roman.Append(pair.Value);
+                number -= pair.Key;
+            }
+        }
+
+        return roman.ToString();
     }
 }
