@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpersUnitTest", "HelpersUnitTest\HelpersUnitTest.csproj", "{22B54FC2-0847-4A03-BD28-9405F44C6A8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backendTest", "backendTest\backendTest.csproj", "{5E840FAB-5BF8-4EDF-B257-208678ABE883}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,18 @@ Global
 		{22B54FC2-0847-4A03-BD28-9405F44C6A8F}.Release|x64.Build.0 = Release|Any CPU
 		{22B54FC2-0847-4A03-BD28-9405F44C6A8F}.Release|x86.ActiveCfg = Release|Any CPU
 		{22B54FC2-0847-4A03-BD28-9405F44C6A8F}.Release|x86.Build.0 = Release|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Debug|x64.Build.0 = Debug|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Debug|x86.Build.0 = Debug|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Release|x64.ActiveCfg = Release|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Release|x64.Build.0 = Release|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Release|x86.ActiveCfg = Release|Any CPU
+		{5E840FAB-5BF8-4EDF-B257-208678ABE883}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

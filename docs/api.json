@@ -1,0 +1,81 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "backend | v1",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5167/"
+    }
+  ],
+  "paths": {
+    "/calculate": {
+      "post": {
+        "tags": [
+          "backend"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Calculation"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Calculation": {
+        "required": [
+          "firstNumber",
+          "secondNumber",
+          "operation"
+        ],
+        "type": "object",
+        "properties": {
+          "firstNumber": {},
+          "secondNumber": {},
+          "operation": {
+            "maxLength": 1,
+            "minLength": 1,
+            "type": "string",
+            "format": "char"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "backend"
+    }
+  ]
+}

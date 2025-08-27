@@ -1,0 +1,5 @@
+enum Operations
+{
+    Addition = '+',
+    Subtraction = '-'
+}
