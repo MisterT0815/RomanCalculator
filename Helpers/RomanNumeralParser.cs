@@ -35,7 +35,7 @@ public static class RomanNumeralParser
             throw new ArgumentException("Input cannot be null or empty.");
         try
         {
-            return RomanToInt(roman.ToUpper(), 0, 0, false);
+            return RomanToInt(roman.ToUpper(), 0, 0, false, 0);
         }
         catch (ArgumentException)
         {
@@ -43,7 +43,7 @@ public static class RomanNumeralParser
         }
     }
 
-    public static int RomanToInt(string roman, int previousSum, int previousCharValue, bool previousWasSubtractive)
+    public static int RomanToInt(string roman, int previousSum, int previousCharValue, bool previousWasSubtractive, int numberOfSamePreviousChar)
     {
         //Default Case
         if (string.IsNullOrEmpty(roman)) return previousSum;
@@ -58,16 +58,27 @@ public static class RomanNumeralParser
                 // Double subtraction is not allowed
                 if (previousWasSubtractive)
                     throw new ArgumentException("Invalid Roman numeral.");
+                // Subtraction after double of same character is not allowed
+                if (numberOfSamePreviousChar > 1)
+                    throw new ArgumentException("Invalid Roman numeral.");
                 // Subtractive notation, give previousCharValue to mitigate Double subtraction
-                return RomanToInt(roman[..^1], previousSum - currentValue, previousCharValue, true);
+                return RomanToInt(roman[..^1], previousSum - currentValue, previousCharValue, true, 0);
+            }
+            else if (currentValue == previousCharValue)
+            {
+                // Quadruple addition of same number is not allowed
+                if (numberOfSamePreviousChar == 3)
+                    throw new ArgumentException("Invalid Roman numeral.");
+                // Double addition of numbers with 5 is not allowed, as there are already next numbers available
+                if (currentChar == 'V' || currentChar == 'L' || currentChar == 'D')
+                    throw new ArgumentException("Invalid Roman numeral.");
+                // Additive notation, increase numberOfSamePreviousChar, keep previousWasSubtractive to ensure no double of same subtraction: IXIX
+                return RomanToInt(roman[..^1], previousSum + currentValue, currentValue, previousWasSubtractive, numberOfSamePreviousChar + 1);
             }
             else
             {
-                // Double addition of numbers with 5 is not allowed, as there are already next numbers available
-                if (currentValue == previousCharValue && (currentChar == 'V' || currentChar == 'L' || currentChar == 'D'))
-                    throw new ArgumentException("Invalid Roman numeral.");
                 // Additive notation
-                return RomanToInt(roman[..^1], previousSum + currentValue, currentValue, false);
+                return RomanToInt(roman[..^1], previousSum + currentValue, currentValue, false, 1);
             }
         }
 

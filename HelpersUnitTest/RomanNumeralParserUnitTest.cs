@@ -62,6 +62,22 @@ public class RomanNumeralParserUnitTest
     }
 
     [Theory]
+    [InlineData("XXXX")]
+    [InlineData("IIII")]
+    public void testInvalidQuadrupleAdditionOfNumbers(string roman)
+    {
+        Assert.Throws<ArgumentException>(() => RomanNumeralParser.RomanToInt(roman));
+    }
+
+    [Theory]
+    [InlineData("IXIX")]
+    [InlineData("XCXC")]
+    public void testInvalidDoubleSameSubtraction(string roman)
+    {
+        Assert.Throws<ArgumentException>(() => RomanNumeralParser.RomanToInt(roman));
+    }
+
+    [Theory]
     [InlineData("LXXXIX", 89)]
     [InlineData("MCMXC", 1990)]
     [InlineData("MMXXIV", 2024)]
