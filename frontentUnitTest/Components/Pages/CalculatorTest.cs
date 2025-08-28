@@ -1,10 +1,20 @@
-using Xunit;
 using Bunit;
 using frontend.Components.Pages;
 using AngleSharp.Dom;
+using frontend.Services;
+using Moq;
+using Microsoft.Extensions.DependencyInjection;
 
 public class CalculatorComponentTest : TestContext
 {
+    private readonly Mock<ICalculationService> CalculationServiceMock;
+
+    public CalculatorComponentTest()
+    {
+        CalculationServiceMock = new Mock<ICalculationService>();
+        Services.AddSingleton<ICalculationService>(CalculationServiceMock.Object);
+    }
+
     [Theory]
     [InlineData("10", "+", "5")]
     [InlineData("20", "-", "10")]
@@ -22,8 +32,10 @@ public class CalculatorComponentTest : TestContext
         // Submit form
         cut.Find("button[type='submit']").Click();
 
-        // Assert suceeds
+        // Assert succeeds
         Assert.Contains("Result:", cut.Markup);
+        // Assert Calculation Service is called
+        CalculationServiceMock.Verify(m => m.Calculate(It.IsAny<CalculationModel>()), Times.Once);
     }
 
     [Theory]
@@ -45,6 +57,8 @@ public class CalculatorComponentTest : TestContext
 
         // Assert validation message is shown
         Assert.Contains(errorMessage, cut.Find("div[class='text-danger']").TextContent);
+        // Assert no calculation is performed
+        CalculationServiceMock.Verify(m => m.Calculate(It.IsAny<CalculationModel>()), Times.Never);
     }
 
     [Theory]
@@ -61,5 +75,7 @@ public class CalculatorComponentTest : TestContext
 
         // Assert validation message is shown
         Assert.Contains(errorMessage, cut.Find("div[class='text-danger']").TextContent);
+        // Assert no calculation is performed
+        CalculationServiceMock.Verify(m => m.Calculate(It.IsAny<CalculationModel>()), Times.Never);
     }
 }

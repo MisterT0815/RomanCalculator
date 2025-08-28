@@ -1,12 +1,19 @@
 using frontend.Components;
+using frontend.Services;
+using Moq;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<ICalculationService, CalculationService>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 var app = builder.Build();
+
+var calculationService = app.Services.GetRequiredService<ICalculationService>();
+calculationService.Initialize();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

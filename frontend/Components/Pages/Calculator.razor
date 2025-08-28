@@ -2,6 +2,8 @@
 @rendermode InteractiveServer
 @using System.ComponentModel.DataAnnotations
 @using frontend.Components
+@using frontend.Services
+@inject ICalculationService ICalculationService
 
 <PageTitle>Calculator</PageTitle>
 
@@ -40,11 +42,6 @@
 
     private async Task Calculate()
     {
-        // TODO call backend to calculate
-        if (result == null){
-            result = 1;
-        } else {
-            result+=1;
-        }
+        result = await ICalculationService.Calculate(calcModel);
     }
 }
