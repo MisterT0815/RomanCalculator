@@ -1,6 +1,6 @@
-using Helpers;
+using lib;
 
-namespace HelperUnitTest;
+namespace libUnitTest;
 
 public class RomanNumeralParserUnitTest
 {

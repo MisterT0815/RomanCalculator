@@ -1,4 +1,4 @@
-namespace Helpers;
+namespace lib;
 public static class RomanNumeralParser
 {
     private static readonly Dictionary<char, int> RomanToIntMap = new Dictionary<char, int>

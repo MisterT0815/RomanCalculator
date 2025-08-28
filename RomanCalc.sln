@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "e2eTest", "e2eTest\e2eTest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "frontentUnitTest", "frontentUnitTest\frontentUnitTest.csproj", "{38C2DCFC-F259-4B78-BBAD-5E17FEA4BAF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{1844FFDE-03F5-42DE-A92D-5A2DCD28290D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lib", "lib\lib.csproj", "{1844FFDE-03F5-42DE-A92D-5A2DCD28290D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpersUnitTest", "HelpersUnitTest\HelpersUnitTest.csproj", "{22B54FC2-0847-4A03-BD28-9405F44C6A8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libUnitTest", "libUnitTest\libUnitTest.csproj", "{22B54FC2-0847-4A03-BD28-9405F44C6A8F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backendTest", "backendTest\backendTest.csproj", "{5E840FAB-5BF8-4EDF-B257-208678ABE883}"
 EndProject
