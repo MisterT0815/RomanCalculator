@@ -7,6 +7,11 @@
 
 <PageTitle>Calculator</PageTitle>
 
+<h1>Roman Calculator</h1>
+
+<p>This calculator allows you to perform operations on both integers and Roman numerals.</p>
+
+<div style="background-color: #f5f5f5; border: 1px solid #000; padding: 24px; border-radius: 8px;">
 <EditForm Model="@calcModel" OnValidSubmit="Calculate" Enhance>
     <DataAnnotationsValidator />
     <div>
@@ -28,10 +33,11 @@
     </div>
     <button type="submit" class="btn btn-primary mt-2">Calculate</button>
 </EditForm>
+</div>
 
 @if (result != null)
 {
-    <div class="mt-3">
+    <div style="background-color: #8bff95; border: 1px solid #000000; padding: 24px; border-radius: 8px;" class="mt-3">
         <strong>Result:</strong> @result
     </div>
 }
