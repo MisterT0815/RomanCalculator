@@ -34,8 +34,8 @@ namespace e2eTest
         }
 
         [Theory(Skip = "Flaky - FIX")]
-        [InlineData("123", "V", "+", "128")]
-        [InlineData("123", "III", "-", "120")]
+        [InlineData("123", "V", "+", "128 or CXXVIII")]
+        [InlineData("123", "III", "-", "120 or CXX")]
         public async Task Successfull_Run(string firstNumber, string secondNumber, string operation, string expectedResult)
         {
             await Page.GotoAsync("http://localhost:5156/");

@@ -29,7 +29,7 @@
     <button type="submit" class="btn btn-primary mt-2">Calculate</button>
 </EditForm>
 
-@if (result.HasValue)
+@if (result != null)
 {
     <div class="mt-3">
         <strong>Result:</strong> @result
@@ -38,7 +38,7 @@
 
 @code {
     private CalculationModel calcModel = new();
-    private double? result;
+    private string? result;
 
     private async Task Calculate()
     {

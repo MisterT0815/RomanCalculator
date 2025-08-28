@@ -1,4 +1,5 @@
 using backend.Models;
+using lib;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,9 @@ app.UseHttpsRedirection();
 
 app.MapPost("/calculate", (Calculation calculation) =>
 {
-    return Results.Ok<int>(calculation.calculate());
+    var resultInt = calculation.calculate();
+    var resultRoman = RomanNumeralParser.IntToRoman(resultInt);
+    return Results.Ok<string>(resultInt + " or " + resultRoman);
 })
 .AddEndpointFilter(async (context, next) =>
 {

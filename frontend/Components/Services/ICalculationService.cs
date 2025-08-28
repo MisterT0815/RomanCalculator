@@ -3,6 +3,6 @@ namespace frontend.Services
     public interface ICalculationService
     {
         void Initialize();
-        Task<int> Calculate(CalculationModel calculation);
+        Task<string> Calculate(CalculationModel calculation);
     }
 }

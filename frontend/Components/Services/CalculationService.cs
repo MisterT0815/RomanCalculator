@@ -20,13 +20,13 @@ namespace frontend.Services
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<int> Calculate(CalculationModel calculation)
+        public async Task<string> Calculate(CalculationModel calculation)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync(
                 "calculate", calculation);
             response.EnsureSuccessStatusCode();
 
-            return await response.Content.ReadAsAsync<int>();
+            return await response.Content.ReadAsAsync<string>();
         }
 
         private class Calculation

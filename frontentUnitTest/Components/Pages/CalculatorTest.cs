@@ -13,6 +13,7 @@ public class CalculatorComponentTest : TestContext
     {
         CalculationServiceMock = new Mock<ICalculationService>();
         Services.AddSingleton<ICalculationService>(CalculationServiceMock.Object);
+        CalculationServiceMock.Setup(m => m.Calculate(It.IsAny<CalculationModel>())).ReturnsAsync("Something");
     }
 
     [Theory]
